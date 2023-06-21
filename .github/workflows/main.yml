@@ -1,0 +1,41 @@
+name: main-build
+
+on:
+  release:
+    types: [created]
+
+jobs:
+  build:
+    permissions: write-all
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          ref: ${{ github.event.release.tag_name }}
+
+      - name: Set up Nix
+        uses: cachix/install-nix-action@v22
+        with:
+          nix_path: nixpkgs=channel:nixos-23.05
+
+      - name: Build APK
+        run: nix develop .#ci -c gradle :androidApp:build
+
+      - name: Build Release Bundle
+        run: nix develop .#ci -c gradle :androidApp:bundleRelease
+
+      - name: Archive production artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: build-outputs
+          path: androidApp/build/outputs/
+
+      - name: Upload APK and AAB to release
+        if: ${{ github.event.release }}
+        uses: softprops/action-gh-release@v1
+        with:
+          files: |
+            androidApp/build/outputs/apk/production/release/*.apk
+            androidApp/build/outputs/bundle/productionRelease/*.aab
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

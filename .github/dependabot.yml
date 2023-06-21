@@ -1,0 +1,33 @@
+version: 2
+updates:
+  - package-ecosystem: "gradle"
+    directory: "/"
+    schedule:
+      interval: "daily"
+    ignore:
+      - dependency-name: "com.android.tools.build:gradle"
+
+  - package-ecosystem: "gradle"
+    directory: "/androidApp"
+    schedule:
+      interval: "daily"
+
+  - package-ecosystem: "gradle"
+    directory: "/desktopApp"
+    schedule:
+      interval: "daily"
+
+  - package-ecosystem: "gradle"
+    directory: "/shared"
+    schedule:
+      interval: "daily"
+
+  - package-ecosystem: "gradle"
+    directory: "/webApp"
+    schedule:
+      interval: "daily"
+
+  - package-ecosystem: "npm"
+    directory: "/webApp"
+    schedule:
+      interval: "daily"

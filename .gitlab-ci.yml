@@ -1,0 +1,155 @@
+stages:
+  - test
+  - build
+  - deploy
+
+check_merge_request:
+  image: abueide/dialexa:latest
+  stage: test
+  script:
+    - ./gradlew check
+  only:
+    - merge_requests
+  when: always
+  allow_failure: false
+  cache:
+    key: "$CI_COMMIT_REF_NAME"
+    paths:
+      - build/
+      - desktopApp/build/
+      - androidApp/build/
+      - webApp/build/
+      - shared/build/
+    policy: pull-push
+  tags:
+    - linux
+    - docker
+
+check_merge_is_valid:
+  image: ubuntu:latest
+  stage: test
+  script:
+    - apt update
+    - apt install git -y
+    - git fetch --unshallow
+    - git checkout main
+    - git merge --ff-only $CI_COMMIT_SHA
+  only:
+    - merge_requests
+  when: always
+  allow_failure: false
+  tags:
+    - linux
+    - docker
+
+after_merge:
+  image: abueide/dialexa:latest
+  stage: test
+  only:
+    - main
+  script:
+    - ./gradlew check
+  when: always
+  allow_failure: false
+  cache:
+    key: "$CI_COMMIT_REF_NAME"
+    paths:
+      - build/
+      - desktopApp/build/
+      - androidApp/build/
+      - webApp/build/
+      - shared/build/
+  tags:
+    - linux
+    - docker
+
+
+
+build_artifacts_linux:
+  image: abueide/dialexa:latest
+  stage: build
+  only:
+    - main
+  needs:
+    - job: after_merge
+  script:
+    - ./gradlew desktopApp:packageReleaseDistributionForCurrentOS
+    - ./gradlew androidApp:assembleRelease
+    - ./gradlew webapp:jsBrowserProductionWebpack
+    # Run it a second time, workaround for https://github.com/JetBrains/compose-jb/issues/2273
+    - ./gradlew webapp:jsBrowserProductionWebpack
+    - mkdir artifacts
+    - cp androidApp/build/outputs/apk/release/*.apk artifacts/
+    - cp desktopApp/build/compose/binaries/main-release/*/*.* artifacts/
+    - mkdir artifacts/webApp
+    - cp -r webApp/build/distributions/* artifacts/webApp/
+  artifacts:
+    paths:
+      - artifacts
+  cache:
+    key: "$CI_COMMIT_REF_NAME"
+    paths:
+      - build/
+      - desktopApp/build/
+      - androidApp/build/
+      - webApp/build/
+      - shared/build/
+  tags:
+    - linux
+    - docker
+
+
+
+build_artifacts_macos:
+  stage: build
+  only:
+    - main
+  needs:
+    - job: after_merge
+  script:
+    - ./gradlew packageReleaseDistributionForCurrentOS
+    - mkdir artifacts
+    - cp desktopApp/build/compose/binaries/main-release/dmg/*.dmg artifacts/
+    - cp -r desktopApp/build/compose/binaries/main-release/app/* artifacts/
+  artifacts:
+    paths:
+      - artifacts
+  tags:
+    - macos
+    - shell
+
+build_artifacts_windows:
+  stage: build
+  only:
+    - main
+  needs:
+    - job: after_merge
+  script:
+    - cmd.exe /c 'gradlew.bat -no-daemon packageReleaseDistributionForCurrentOS'
+    - mkdir artifacts
+    - copy desktopApp\build\compose\binaries\main-release\*\*.* artifacts
+  artifacts:
+    paths:
+      - artifacts
+  tags:
+    - windows
+    - shell
+
+update_and_deploy:
+  stage: deploy
+  script:
+    - scp -r -o StrictHostKeyChecking=no artifacts cchipfs@10.0.97.4:~/dialexa-infra/web-client/
+    - ssh -o StrictHostKeyChecking=no cchipfs@10.0.97.4 'cd /home/cchipfs/dialexa-infra/web-client/ && ./deploy.sh'
+  environment:
+    name: production
+  only:
+    - main
+  needs:
+    - job: build_artifacts_linux
+    - job: build_artifacts_macos
+    - job: build_artifacts_windows
+  variables:
+    DEPLOYMENT_SSH: $DEPLOYMENT_SSH
+  before_script:
+    - eval "$(ssh-agent -s)"
+    - echo "$DEPLOYMENT_SSH" | tr -d '\r' | ssh-add -

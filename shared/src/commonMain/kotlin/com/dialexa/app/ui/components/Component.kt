@@ -4,7 +4,6 @@ import androidx.compose.runtime.Composable
 import org.koin.core.component.KoinComponent
 
 internal interface Component : KoinComponent {
-    val vm: ViewModel
-    @Composable
-    fun View()
+  val vm: ViewModel
+  @Composable fun View()
 }

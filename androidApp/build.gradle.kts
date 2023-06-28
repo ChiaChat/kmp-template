@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.kotlin.multiplatform)
     alias(libs.plugins.compose.multiplatform)
     alias(libs.plugins.android.application)
+    alias(libs.plugins.ktfmt)
 }
 
 kotlin {
@@ -36,4 +37,8 @@ android {
 
 compose {
     kotlinCompilerPlugin.set("androidx.compose.compiler:compiler:1.4.6")
+}
+
+tasks.named("ktfmtFormatKmpAndroidMain") {
+    dependsOn(":androidApp:ktfmtFormatMain")
 }

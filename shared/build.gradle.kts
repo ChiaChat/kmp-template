@@ -4,6 +4,7 @@ plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.compose.multiplatform)
     alias(libs.plugins.sqldelight)
+    alias(libs.plugins.ktfmt)
     alias(libs.plugins.kover)
 }
 
@@ -133,4 +134,8 @@ android {
 
 compose {
     kotlinCompilerPlugin.set("androidx.compose.compiler:compiler:1.4.6")
+}
+
+tasks.named("ktfmtFormatKmpAndroidMain") {
+    dependsOn(":shared:ktfmtFormatMain")
 }

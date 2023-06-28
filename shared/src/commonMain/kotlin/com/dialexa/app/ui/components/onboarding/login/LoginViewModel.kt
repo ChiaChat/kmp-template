@@ -1,31 +1,31 @@
 package com.dialexa.app.ui.components.onboarding.login
 
 import co.touchlab.kermit.Logger
-import kotlinx.coroutines.flow.MutableStateFlow
-import com.dialexa.app.ui.components.ViewModel
 import com.dialexa.app.ui.components.KoinViewModel
+import com.dialexa.app.ui.components.ViewModel
 import com.dialexa.app.ui.services.ResourceService
 import com.dialexa.app.ui.services.ThemeService
+import kotlinx.coroutines.flow.MutableStateFlow
 import org.koin.core.component.inject
 
 internal interface LoginViewModel : ViewModel {
-    val themeService: ThemeService
-    val resourceService: ResourceService
+  val themeService: ThemeService
+  val resourceService: ResourceService
 
-    val username: MutableStateFlow<String>
-    val password: MutableStateFlow<String>
+  val username: MutableStateFlow<String>
+  val password: MutableStateFlow<String>
 
-    fun onLogin()
+  fun onLogin()
 }
 
 internal class LoginViewModelImpl : KoinViewModel(), LoginViewModel {
-    override val themeService: ThemeService by inject()
-    override val resourceService: ResourceService by inject()
+  override val themeService: ThemeService by inject()
+  override val resourceService: ResourceService by inject()
 
-    override val username: MutableStateFlow<String> = MutableStateFlow("")
-    override val password: MutableStateFlow<String> = MutableStateFlow("")
+  override val username: MutableStateFlow<String> = MutableStateFlow("")
+  override val password: MutableStateFlow<String> = MutableStateFlow("")
 
-    override fun onLogin() {
-        Logger.i { "Login tapped" }
-    }
+  override fun onLogin() {
+    Logger.i { "Login tapped" }
+  }
 }

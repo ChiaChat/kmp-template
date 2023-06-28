@@ -5,40 +5,38 @@
 
 import android.content.Context
 import androidx.compose.runtime.Composable
-import com.soywiz.korio.android.AndroidCoroutineContext
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
 import com.dialexa.app.SharedAppModules
 import com.dialexa.app.ui.ComposeAppModules
 import com.dialexa.app.ui.ComposeRoot
+import com.soywiz.korio.android.AndroidCoroutineContext
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import org.koin.core.context.startKoin
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
 
-
 class AndroidRoot(androidContext: Context) {
-    private val root = ComposeRoot()
-    private val androidModule = module {
-        factory(named("ioScope")) {
-            CoroutineScope(Dispatchers.IO + AndroidCoroutineContext(androidContext))
-        }
-        factory(named("vmScope")) {
-            CoroutineScope(Dispatchers.Default + AndroidCoroutineContext(androidContext))
-        }
+  private val root = ComposeRoot()
+  private val androidModule = module {
+    factory(named("ioScope")) {
+      CoroutineScope(Dispatchers.IO + AndroidCoroutineContext(androidContext))
     }
-
-    init {
-        startKoin {
-            val composeModules = ComposeAppModules()
-            val sharedModules = SharedAppModules()
-            modules(androidModule + composeModules.all + sharedModules.all)
-            allowOverride(false)
-        }
+    factory(named("vmScope")) {
+      CoroutineScope(Dispatchers.Default + AndroidCoroutineContext(androidContext))
     }
+  }
 
-    @Composable
-    fun View() {
-        root.View()
+  init {
+    startKoin {
+      val composeModules = ComposeAppModules()
+      val sharedModules = SharedAppModules()
+      modules(androidModule + composeModules.all + sharedModules.all)
+      allowOverride(false)
     }
+  }
 
+  @Composable
+  fun View() {
+    root.View()
+  }
 }

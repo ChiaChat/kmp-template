@@ -5,8 +5,7 @@
 @file:Suppress(
     "INVISIBLE_MEMBER",
     "INVISIBLE_REFERENCE",
-    "EXPOSED_PARAMETER_TYPE"
-) // WORKAROUND: ComposeWindow and ComposeLayer are internal
+    "EXPOSED_PARAMETER_TYPE") // WORKAROUND: ComposeWindow and ComposeLayer are internal
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.window.ComposeWindow
@@ -23,13 +22,13 @@ fun BrowserViewportWindow(
     title: String = "Untitled",
     content: @Composable ComposeWindow.() -> Unit
 ) {
-    val htmlHeadElement = document.head!!
-    htmlHeadElement.appendChild(
-        (document.createElement("style") as HTMLStyleElement).apply {
-            type = "text/css"
-            appendChild(
-                document.createTextNode(
-                    """
+  val htmlHeadElement = document.head!!
+  htmlHeadElement.appendChild(
+      (document.createElement("style") as HTMLStyleElement).apply {
+        type = "text/css"
+        appendChild(
+            document.createTextNode(
+                """
                     html, body {
                         overflow: hidden;
                         margin: 0 !important;
@@ -40,37 +39,35 @@ fun BrowserViewportWindow(
                         outline: none;
                     }
                     """
-                        .trimIndent()
-                )
-            )
+                    .trimIndent()))
+      })
+
+  fun HTMLCanvasElement.fillViewportSize() {
+    setAttribute("width", "${window.innerWidth}")
+    setAttribute("height", "${window.innerHeight}")
+  }
+
+  val canvas =
+      (document.getElementById(CANVAS_ELEMENT_ID) as HTMLCanvasElement).apply { fillViewportSize() }
+
+  ComposeWindow().apply {
+    window.addEventListener(
+        "resize",
+        {
+          canvas.fillViewportSize()
+          layer.layer.attachTo(canvas)
+          val scale = layer.layer.contentScale
+          layer.setSize((canvas.width / scale).toInt(), (canvas.height / scale).toInt())
+          layer.layer.needRedraw()
         })
 
-    fun HTMLCanvasElement.fillViewportSize() {
-        setAttribute("width", "${window.innerWidth}")
-        setAttribute("height", "${window.innerHeight}")
-    }
+    // WORKAROUND: ComposeWindow does not implement `setTitle(title)`
+    val htmlTitleElement =
+        (htmlHeadElement.getElementsByTagName("title").item(0)
+            ?: document.createElement("title").also { htmlHeadElement.appendChild(it) })
+            as HTMLTitleElement
+    htmlTitleElement.textContent = title
 
-    val canvas =
-        (document.getElementById(CANVAS_ELEMENT_ID) as HTMLCanvasElement).apply { fillViewportSize() }
-
-    ComposeWindow().apply {
-        window.addEventListener(
-            "resize",
-            {
-                canvas.fillViewportSize()
-                layer.layer.attachTo(canvas)
-                val scale = layer.layer.contentScale
-                layer.setSize((canvas.width / scale).toInt(), (canvas.height / scale).toInt())
-                layer.layer.needRedraw()
-            })
-
-        // WORKAROUND: ComposeWindow does not implement `setTitle(title)`
-        val htmlTitleElement =
-            (htmlHeadElement.getElementsByTagName("title").item(0)
-                ?: document.createElement("title").also { htmlHeadElement.appendChild(it) })
-                    as HTMLTitleElement
-        htmlTitleElement.textContent = title
-
-        setContent { content(this) }
-    }
+    setContent { content(this) }
+  }
 }

@@ -4,10 +4,9 @@ import BrowserViewportWindow
 import com.dialexa.app.WebRoot
 import org.jetbrains.skiko.wasm.onWasmReady
 
-
 fun main() {
-    onWasmReady {
-        val app = WebRoot()
-        BrowserViewportWindow("Accelerator Multiplatform") { app.View() }
-    }
+  onWasmReady {
+    val app = WebRoot()
+    BrowserViewportWindow("Accelerator Multiplatform") { app.View() }
+  }
 }

@@ -12,17 +12,17 @@ import androidx.compose.ui.text.font.FontWeight
 }*/
 
 fun fontToWeight(name: String): FontWeight {
-    return when (name.lowercase()) {
-        "semibold" -> FontWeight.SemiBold
-        "bold" -> FontWeight.Bold
-        "extrabold" -> FontWeight.ExtraBold
-        "light" -> FontWeight.Light
-        "regular" -> FontWeight.Normal
-        "normal" -> FontWeight.Normal
-        "thin" -> FontWeight.Thin
-        "extralight" -> FontWeight.ExtraLight
-        else -> FontWeight.Normal
-    }
+  return when (name.lowercase()) {
+    "semibold" -> FontWeight.SemiBold
+    "bold" -> FontWeight.Bold
+    "extrabold" -> FontWeight.ExtraBold
+    "light" -> FontWeight.Light
+    "regular" -> FontWeight.Normal
+    "normal" -> FontWeight.Normal
+    "thin" -> FontWeight.Thin
+    "extralight" -> FontWeight.ExtraLight
+    else -> FontWeight.Normal
+  }
 }
 
 /*suspend fun loadFontFamily(name: String): FontFamily {

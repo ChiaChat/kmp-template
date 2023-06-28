@@ -12,14 +12,14 @@ import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 
 internal class ComposeRoot : KoinComponent {
-    val navigationService: NavigationService by inject()
+  val navigationService: NavigationService by inject()
 
-    @Composable
-    fun View() {
-        AppTheme() {
-            Box(modifier = Modifier.fillMaxSize().background(MaterialTheme.colorScheme.background)) {
-                navigationService.currentView()
-            }
-        }
+  @Composable
+  fun View() {
+    AppTheme() {
+      Box(modifier = Modifier.fillMaxSize().background(MaterialTheme.colorScheme.background)) {
+        navigationService.currentView()
+      }
     }
+  }
 }

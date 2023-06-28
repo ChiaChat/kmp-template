@@ -107,3 +107,6 @@ fastlane/test_output
 iOSInjectionProject/
 Pods/
 node_modules/
+
+flake.nix
+flake.lock

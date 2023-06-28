@@ -1,6 +1,6 @@
 [versions]
 kotlin = "1.8.20"
-androidGradlePlugin = "8.0.0"
+androidGradlePlugin = "7.4.0"
 compose-multiplatform = "1.4.0"
 compose-compiler = "1.4.6"
 detekt = "1.23.0"
@@ -22,7 +22,7 @@ navCompose = "2.4.2"
 accompanist = "0.24.11-rc"
 nativeCoroutines = "0.12.5"
 kor = "3.3.0"
-ktfmtGradle = "0.11.0"
+ktfmt = "0.12.0"
 conveyor = "1.2"
 kotlinxSerialization = "1.4.1"
 mpsettings = "1.0.0-RC"
@@ -87,3 +87,4 @@ android-library = { id = "com.android.library", version.ref = "androidGradlePlug
 compose-multiplatform = { id = "org.jetbrains.compose", version.ref = "compose-multiplatform" }
 taskinfo = { id = "org.barfuin.gradle.taskinfo", version = "2.1.0" }
 sqldelight = { id = "app.cash.sqldelight", version.ref = "sqlDelight" }
+ktfmt = { id = "com.ncorti.ktfmt.gradle", version.ref = "ktfmt" }

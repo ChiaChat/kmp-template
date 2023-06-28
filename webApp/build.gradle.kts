@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.compose.multiplatform)
     alias(libs.plugins.kotlin.multiplatform)
+    alias(libs.plugins.ktfmt)
 }
 
 val resPath = "src/commonMain/resources"

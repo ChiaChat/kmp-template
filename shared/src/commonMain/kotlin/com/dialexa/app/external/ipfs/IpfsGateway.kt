@@ -1,5 +1,3 @@
 package com.dialexa.app.external.ipfs
 
-internal data class IpfsGateway(
-    val address: String
-)
+internal data class IpfsGateway(val address: String)

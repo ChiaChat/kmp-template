@@ -14,26 +14,26 @@ class ToastService(
     val logger: Logger? = null
 ) {
 
-    val currentToast = MutableStateFlow<Toast?>(null)
+  val currentToast = MutableStateFlow<Toast?>(null)
 
-    fun toast(toast: Toast) {
-        currentToast.value = toast
-        ioScope.launch {
-            delay(toastTimer)
-            if (currentToast.value == toast) {
-                currentToast.value = null
-            }
-        }
-        logger?.let(toast::log)
+  fun toast(toast: Toast) {
+    currentToast.value = toast
+    ioScope.launch {
+      delay(toastTimer)
+      if (currentToast.value == toast) {
+        currentToast.value = null
+      }
     }
+    logger?.let(toast::log)
+  }
 
-    fun error(message: String) = toast(Toast(ToastType.ERROR, message))
+  fun error(message: String) = toast(Toast(ToastType.ERROR, message))
 
-    fun success(message: String) = toast(Toast(ToastType.SUCCESS, message))
+  fun success(message: String) = toast(Toast(ToastType.SUCCESS, message))
 
-    fun debug(message: String) = toast(Toast(ToastType.DEBUG, message))
+  fun debug(message: String) = toast(Toast(ToastType.DEBUG, message))
 
-    fun info(message: String) = toast(Toast(ToastType.INFO, message))
+  fun info(message: String) = toast(Toast(ToastType.INFO, message))
 
-    fun warning(message: String) = toast(Toast(ToastType.WARNING, message))
+  fun warning(message: String) = toast(Toast(ToastType.WARNING, message))
 }

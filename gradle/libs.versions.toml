@@ -29,7 +29,7 @@ mpsettings = "1.0.0-RC"
 circuit = "0.4.0"
 decompose = "1.0.0-beta-02"
 androidx-appcompat = "1.6.1"
-androidx-ktx = "1.9.0"
+androidx-ktx = "1.10.1"
 
 [libraries]
 detekt-formatting = { module = "io.gitlab.arturbosch.detekt:detekt-formatting", version.ref = "detekt" }

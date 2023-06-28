@@ -27,11 +27,16 @@ val ico = icons.resolve("dialexa-icon-gold.ico")
 val icns = icons.resolve("dialexa-icon-gold.icns")
 val png = icons.resolve("dialexa-icon-gold.png")
 
+
+val artifactName: String by project
+val version: String by project
+val group: String by project
+
 compose {
     kotlinCompilerPlugin.set("androidx.compose.compiler:compiler:1.4.6")
     desktop {
         application {
-            mainClass = "com.dialexa.app.desktop.MainKt"
+            mainClass = "${group}.app.desktop.MainKt"
 
             buildTypes.release.proguard {
                 this.isEnabled.set(true)
@@ -40,9 +45,9 @@ compose {
 
             nativeDistributions {
                 targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
-                packageName = "Accelerator Multiplatform"
-                packageVersion = "1.0.0"
                 modules("java.sql")
+                packageName = artifactName
+                packageVersion = version
 
                 windows {
                     menu = true
@@ -53,13 +58,12 @@ compose {
                 }
 
                 macOS {
-                    bundleID = "com.dialexa.app"
+                    bundleID = "$group.app.desktop"
                     iconFile.set(icns)
                 }
 
                 linux {
                     iconFile.set(png)
-                    packageName = "accelerator-multiplatform"
                     debMaintainer = "andrea.bueide@dialexa.com"
                 }
             }

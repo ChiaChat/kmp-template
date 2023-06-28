@@ -19,11 +19,12 @@ kotlin {
 }
 
 android {
+    val packagePath = properties["group"] as String + ".app.android"
     compileSdk = 34
-    namespace = "com.dialexa.app"
+    namespace = packagePath
     buildToolsVersion = "34.0.0"
     defaultConfig {
-        applicationId = "com.dialexa.app"
+        applicationId = packagePath
         minSdk = 24
         targetSdk = 34
         versionCode = 1

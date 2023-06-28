@@ -5,13 +5,13 @@
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="Accelerator Multiplatform"
+        android:label="Accelerator KMP"
         android:roundIcon="@drawable/ic_launcher_background"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <activity
             android:exported="true"
-            android:name="com.dialexa.app.android.MainActivity"
+            android:name="com.dialexa.accelerator.kmp.app.android.MainActivity"
         >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

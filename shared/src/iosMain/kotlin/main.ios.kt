@@ -9,10 +9,10 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Application
-import com.dialexa.app.SharedAppModules
-import com.dialexa.app.ui.ComposeAppModules
-import com.dialexa.app.ui.ComposeRoot
-import com.dialexa.app.ui.theme.AcceleratorTheme
+import com.dialexa.accelerator.kmp.shared.SharedAppModules
+import com.dialexa.accelerator.kmp.shared.ui.ComposeAppModules
+import com.dialexa.accelerator.kmp.shared.ui.ComposeRoot
+import com.dialexa.accelerator.kmp.shared.ui.theme.AppTheme
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import org.koin.core.context.startKoin
@@ -23,26 +23,26 @@ import platform.UIKit.UIViewController
 internal val root = ComposeRoot()
 
 internal val iosModule = module {
-  factory(named("ioScope")) { CoroutineScope(Dispatchers.Default) }
-  factory(named("vmScope")) { CoroutineScope(Dispatchers.Default) }
+    factory(named("ioScope")) { CoroutineScope(Dispatchers.Default) }
+    factory(named("vmScope")) { CoroutineScope(Dispatchers.Default) }
 }
 
 fun MainViewController(): UIViewController {
-  startKoin {
-    val composeModules = ComposeAppModules()
-    val sharedModules = SharedAppModules()
-    modules(iosModule + composeModules.all + sharedModules.all)
-    allowOverride(false)
-  }
-  val controller: UIViewController =
-      Application("Accelerator Multiplatform") {
-        AcceleratorTheme.AppTheme {
-          Column(modifier = Modifier.background(MaterialTheme.colorScheme.background)) {
-            Spacer(Modifier.height(30.dp))
-            // To skip upper part of screen.
-            root.View()
-          }
+    startKoin {
+        val composeModules = ComposeAppModules()
+        val sharedModules = SharedAppModules()
+        modules(iosModule + composeModules.all + sharedModules.all)
+        allowOverride(false)
+    }
+    val controller: UIViewController =
+        Application("Accelerator KMP") {
+            AppTheme.AppTheme {
+                Column(modifier = Modifier.background(MaterialTheme.colorScheme.background)) {
+                    Spacer(Modifier.height(30.dp))
+                    // To skip upper part of screen.
+                    root.View()
+                }
+            }
         }
-      }
-  return controller
+    return controller
 }

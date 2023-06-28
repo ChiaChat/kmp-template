@@ -8,8 +8,6 @@ plugins {
     alias(libs.plugins.kover)
 }
 
-version = "1.0-SNAPSHOT"
-
 kotlin {
     android()
     jvm("desktop")
@@ -97,10 +95,12 @@ kotlin {
     }
 }
 
+
 sqldelight {
+    val group = properties["group"] as String
     databases {
-        create("AcceleratorDb") { // This will be the name of the generated database class.
-            packageName.set("com.dialexa.shared")
+        create(extra["camelCaseName"] as String + "Db") { // This will be the name of the generated database class.
+            packageName.set("$group.shared.db")
             dialect(libs.dialect.sqlite)
             deriveSchemaFromMigrations.set(true)
             verifyMigrations.set(true)
@@ -110,15 +110,14 @@ sqldelight {
     }
 }
 
-
-
+val group: String by project
 android {
     compileSdk = 34
     buildToolsVersion = "34.0.0"
     sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
     sourceSets["main"].res.srcDirs("src/androidMain/res")
     sourceSets["main"].assets.srcDirs("src/commonMain/resources")
-    namespace = "com.dialexa.shared"
+    namespace = "$group.shared"
     defaultConfig {
         minSdk = 24
         targetSdk = 34

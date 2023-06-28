@@ -16,22 +16,22 @@ class DbService(val driver: SqlDriver) {
   }
 
   @Suppress("TooGenericExceptionCaught")
-  fun getVersion(): Int? {
+  fun getVersion(): Long? {
     return try {
-      db.versionTableQueries.getVersion().executeAsOneOrNull()?.toInt()
+      db.versionTableQueries.getVersion().executeAsOneOrNull()
     } catch (e: Exception) {
       1
     }
   }
 
-  suspend fun setVersion(version: Int): Boolean {
+  suspend fun setVersion(version: Long): Boolean {
     val setVersionSucceeded =
         try {
           val tableVersion = db.versionTableQueries.getVersion().executeAsOneOrNull()
           if (tableVersion == null) {
-            db.versionTableQueries.setVersion(version.toLong())
+            db.versionTableQueries.setVersion(version)
           } else {
-            db.versionTableQueries.updateVersion(version.toLong())
+            db.versionTableQueries.updateVersion(version)
           }
           true
         } catch (e: Exception) {

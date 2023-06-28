@@ -100,7 +100,7 @@ kotlin {
 sqldelight {
     databases {
         create("AcceleratorDb") { // This will be the name of the generated database class.
-            packageName.set("com.dialexa.app")
+            packageName.set("com.dialexa.shared")
             dialect(libs.dialect.sqlite)
             deriveSchemaFromMigrations.set(true)
             verifyMigrations.set(true)
@@ -118,7 +118,7 @@ android {
     sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
     sourceSets["main"].res.srcDirs("src/androidMain/res")
     sourceSets["main"].assets.srcDirs("src/commonMain/resources")
-    namespace = "com.dialexa.app"
+    namespace = "com.dialexa.shared"
     defaultConfig {
         minSdk = 24
         targetSdk = 34

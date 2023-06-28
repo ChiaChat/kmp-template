@@ -1,6 +1,6 @@
 [versions]
 kotlin = "1.8.20"
-androidGradlePlugin = "8.0.1"
+androidGradlePlugin = "8.0.2"
 compose-multiplatform = "1.4.0"
 compose-compiler = "1.4.6"
 detekt = "1.23.0"

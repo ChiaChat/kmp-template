@@ -28,6 +28,6 @@ updates:
       interval: "daily"
 
   - package-ecosystem: "npm"
-    directory: ".", "/kotlin-js-store"
+    directory: "."
     schedule:
       interval: "daily"

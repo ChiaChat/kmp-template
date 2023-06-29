@@ -8,7 +8,7 @@ internal class LandingComponent : Component {
 
     @Composable
     override fun View() {
-        LandingScreen { login ->
+        LandingComposables.LandingScreen { login ->
             if (login) {
                 vm.onLogin()
             } else {

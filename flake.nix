@@ -26,17 +26,11 @@
           gradle
           jdk17
           git
+	  ruby
         ];
 
         overlay = final: prev: {
           android-sdk = android.sdk.${system} commonAndroidSdkPackages;
-          android-studio = (import nixpkgs {
-            inherit system;
-            config.allowUnfree = true;
-            overlays = [
-              devshell.overlays.default
-            ];
-          }).androidStudioPackages.stable;
           test-android-sdk = android.sdk.${system} (sdkPkgs: commonAndroidSdkPackages sdkPkgs ++ testAndroidSdkPackages sdkPkgs);
         };
 
@@ -55,7 +49,7 @@
             motd = ''
               Entered the Android app development environment.
             '';
-            buildInputs = commonBuildInputs ++ [ pkgs.android-sdk pkgs.android-studio ];
+            buildInputs = commonBuildInputs ++ [ pkgs.android-sdk ];
           };
 
           ci = pkgs.mkShell {

@@ -111,16 +111,18 @@ sqldelight {
 }
 
 val group: String by project
+val androidSdkVersion: String by project
+val buildTools: String by project
 android {
-    compileSdk = 34
-    buildToolsVersion = "34.0.0"
+    compileSdk = androidSdkVersion.toInt()
+    buildToolsVersion = buildTools
     sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
     sourceSets["main"].res.srcDirs("src/androidMain/res")
     sourceSets["main"].assets.srcDirs("src/commonMain/resources")
     namespace = "$group.shared"
     defaultConfig {
         minSdk = 24
-        targetSdk = 34
+        targetSdk = androidSdkVersion.toInt()
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17

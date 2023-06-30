@@ -1,7 +1,8 @@
 package com.dialexa.accelerator.kmp.shared.ui.theme
 
-import com.soywiz.korio.file.VfsFile
-import com.soywiz.korio.file.std.resourcesVfs
+import korlibs.io.file.VfsFile
+import korlibs.io.file.std.resourcesVfs
+
 
 const val ICON_PATH = "assets/icons"
 

@@ -18,15 +18,20 @@ kotlin {
     }
 }
 
+
+val group: String by project
+val androidSdkVersion: String by project
+val buildTools: String by project
+
 android {
-    val packagePath = properties["group"] as String + ".app.android"
-    compileSdk = 34
+    val packagePath = "$group.app.android"
+    compileSdk = androidSdkVersion.toInt()
     namespace = packagePath
-    buildToolsVersion = "34.0.0"
+    buildToolsVersion = buildTools
     defaultConfig {
         applicationId = packagePath
         minSdk = 24
-        targetSdk = 34
+        targetSdk = androidSdkVersion.toInt()
         versionCode = 1
         versionName = "1.0"
     }

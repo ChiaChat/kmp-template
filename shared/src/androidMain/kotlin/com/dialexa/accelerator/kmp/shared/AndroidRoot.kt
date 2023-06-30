@@ -8,7 +8,7 @@ import androidx.compose.runtime.Composable
 import com.dialexa.accelerator.kmp.shared.SharedAppModules
 import com.dialexa.accelerator.kmp.shared.ui.ComposeAppModules
 import com.dialexa.accelerator.kmp.shared.ui.ComposeRoot
-import com.soywiz.korio.android.AndroidCoroutineContext
+import korlibs.io.android.AndroidCoroutineContext
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import org.koin.core.context.startKoin

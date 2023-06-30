@@ -17,7 +17,7 @@ class ResourceService(private val ioScope: CoroutineScope) {
             onLoad(cachedIcon)
         } else {
             ioScope.launch {
-                val bitmap = icon.file.readImageBitmap()
+                val bitmap: ImageBitmap = icon.file.readImageBitmap()
                 iconCache.value += icon to bitmap
                 onLoad(bitmap)
             }

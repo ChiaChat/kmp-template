@@ -24,10 +24,6 @@ subprojects {
     group = properties["group"]!!
     version = properties["version"]!!
 
-    tasks.withType<com.ncorti.ktfmt.gradle.tasks.KtfmtCheckTask>().configureEach {
-        inputs.files.filter { !it.path.contains("build/generated") }
-    }
-
     plugins.withType<com.ncorti.ktfmt.gradle.KtfmtPlugin>().configureEach {
         ktfmt {
             kotlinLangStyle()

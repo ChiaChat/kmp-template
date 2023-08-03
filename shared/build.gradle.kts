@@ -136,7 +136,3 @@ android {
 compose {
     kotlinCompilerPlugin.set("androidx.compose.compiler:compiler:1.4.6")
 }
-
-tasks.named("ktfmtFormatKmpAndroidMain") {
-    dependsOn(":shared:ktfmtFormatMain")
-}

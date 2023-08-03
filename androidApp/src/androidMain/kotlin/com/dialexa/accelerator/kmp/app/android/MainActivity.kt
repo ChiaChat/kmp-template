@@ -8,6 +8,7 @@ import org.koin.core.context.stopKoin
 
 class MainActivity : AppCompatActivity() {
     val root = AndroidRoot(this)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent { root.View() }

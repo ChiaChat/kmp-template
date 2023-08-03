@@ -11,6 +11,7 @@ internal interface LandingViewModel : ViewModel {
     val navigationService: NavigationService
 
     fun onLogin()
+
     fun onRegister()
 }
 

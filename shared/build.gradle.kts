@@ -12,13 +12,7 @@ kotlin {
     android()
     jvm("desktop")
     js(IR) {
-        browser() {
-            testTask {
-                useKarma {
-                    useFirefoxHeadless()
-                }
-            }
-        }
+        browser() { }
     }
 
     ios()
@@ -40,9 +34,9 @@ kotlin {
         val commonMain by getting {
             dependencies {
                 implementation(compose.runtime)
-                implementation(compose.foundation)
-                implementation(compose.material3)
                 api(compose.ui)
+                api(compose.foundation)
+                api(compose.material3)
 
                 api(libs.decompose)
                 api(libs.kermit)
@@ -134,5 +128,5 @@ android {
 }
 
 compose {
-    kotlinCompilerPlugin.set("androidx.compose.compiler:compiler:1.4.6")
+    kotlinCompilerPlugin.set("androidx.compose.compiler:compiler:1.5.0")
 }

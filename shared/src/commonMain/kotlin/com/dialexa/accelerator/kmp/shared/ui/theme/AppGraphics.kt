@@ -3,7 +3,6 @@ package com.dialexa.accelerator.kmp.shared.ui.theme
 import korlibs.io.file.VfsFile
 import korlibs.io.file.std.resourcesVfs
 
-
 const val ICON_PATH = "assets/icons"
 
 enum class AppGraphics(val file: VfsFile) {

@@ -1,7 +1,0 @@
-{
-  "name": "dialexa",
-  "version": "1.0.0",
-  "dependencies": {
-    "copy-webpack-plugin": "^11.0.0"
-  }
-}

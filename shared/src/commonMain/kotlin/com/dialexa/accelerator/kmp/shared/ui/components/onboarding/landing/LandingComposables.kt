@@ -19,10 +19,9 @@ internal object LandingComposables {
             ) {
                 Graphics.Logo()
                 Inputs.CchActionButton("Login", ActionButtonColors.SECONDARY) { onNext(true) }
-                Inputs.CchActionButton(
-                    "Create Account",
-                    ActionButtonColors.SURFACE
-                ) { onNext(false) }
+                Inputs.CchActionButton("Create Account", ActionButtonColors.SURFACE) {
+                    onNext(false)
+                }
             }
         }
     }

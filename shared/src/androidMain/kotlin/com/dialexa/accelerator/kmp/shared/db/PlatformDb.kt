@@ -9,6 +9,7 @@ import org.koin.core.component.inject
 
 actual class PlatformDb : KoinComponent {
     val context: Context by inject()
+
     actual suspend fun getDriver(): SqlDriver {
         val driver: SqlDriver =
             AndroidSqliteDriver(AcceleratorKmpDb.Schema.synchronous(), context, "dialexa.db")

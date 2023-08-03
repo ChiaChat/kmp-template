@@ -33,7 +33,7 @@ val version: String by project
 val group: String by project
 
 compose {
-    kotlinCompilerPlugin.set("androidx.compose.compiler:compiler:1.4.6")
+    kotlinCompilerPlugin.set("androidx.compose.compiler:compiler:1.5.0")
     desktop {
         application {
             mainClass = "${group}.app.desktop.MainKt"

@@ -59,8 +59,8 @@ internal object Graphics : KoinComponent {
     @Composable
     fun OutlinedGraphicButton(
         graphic: AppGraphics,
-        outlineColor: Color = MaterialTheme.colorScheme.secondary,
         contentDescription: String,
+        outlineColor: Color = MaterialTheme.colorScheme.secondary,
         onClick: () -> Unit
     ) {
         IconButton(onClick = onClick) {
@@ -75,7 +75,7 @@ internal object Graphics : KoinComponent {
         outlineColor: Color,
         modifier: Modifier = Modifier
     ) {
-        Box() { Graphic(graphic, contentDescription, tint = outlineColor) }
+        Box() { Graphic(graphic, contentDescription, tint = outlineColor, modifier = modifier) }
     }
 
     @Composable

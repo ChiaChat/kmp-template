@@ -31,7 +31,6 @@ fun InitKoin() {
     }
 }
 
-
 fun MainViewController() = ComposeUIViewController {
     AppTheme.AppTheme {
         Column(modifier = Modifier.background(MaterialTheme.colorScheme.background)) {
@@ -41,5 +40,3 @@ fun MainViewController() = ComposeUIViewController {
         }
     }
 }
-
-

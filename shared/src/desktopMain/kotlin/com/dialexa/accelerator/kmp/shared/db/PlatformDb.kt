@@ -6,6 +6,7 @@ import korlibs.io.file.std.userHomeVfs
 
 actual class PlatformDb {
     private val sqlitePath = userHomeVfs[".dialexa/dialexa.db"]
+
     actual suspend fun getDriver(): SqlDriver {
         sqlitePath.parent.mkdirs()
         return JdbcSqliteDriver("jdbc:sqlite:${sqlitePath.absolutePath}")

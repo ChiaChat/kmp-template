@@ -14,6 +14,7 @@ import androidx.compose.ui.unit.dp
 
 internal object AuthInputs {
     private val textFieldModifier = Modifier.height(60.dp).width(300.dp)
+
     private fun isValidEmail(email: String): Boolean {
         return email.contains("@") && email.contains(".")
     }
@@ -94,7 +95,7 @@ internal object AuthInputs {
             visualTransformation = PasswordVisualTransformation(),
             isError = error,
             modifier = textFieldModifier,
-            colors = TextFieldDefaults.outlinedTextFieldColors()
+            colors = TextFieldDefaults.outlinedTextFieldColors(),
         )
     }
 }

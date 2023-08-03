@@ -9,7 +9,7 @@ class SettingsTest {
 
     @Test
     fun CheckSettingsAreSet() {
-        if (com.dialexa.shared.util.getPlatform() != Platform.ANDROID) {
+        if (getPlatform() != Platform.ANDROID) {
             val settings = MpSettings()
             val refresh = settings.refreshToken
             settings.refreshToken = testString

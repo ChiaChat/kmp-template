@@ -28,4 +28,4 @@ jobs:
           build-tools-version: '34.0.0'
 
       - name: Check with Gradle
-        run: ./gradlew :androidApp:check
+        run: ./gradlew check

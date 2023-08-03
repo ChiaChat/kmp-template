@@ -125,3 +125,8 @@ fun removeEmptyDirs(path: Path) {
         }
     }
 }
+
+koverReport {
+    defaults {}
+}
+

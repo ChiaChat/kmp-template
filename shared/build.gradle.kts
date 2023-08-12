@@ -128,5 +128,5 @@ android {
 }
 
 compose {
-    kotlinCompilerPlugin.set("androidx.compose.compiler:compiler:1.5.0")
+    kotlinCompilerPlugin.set("androidx.compose.compiler:compiler:1.5.1")
 }

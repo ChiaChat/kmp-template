@@ -1,5 +1,5 @@
 {
-  description = "Accelerator KMP";
+  description = "KMP Template";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs";

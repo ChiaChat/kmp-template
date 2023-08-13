@@ -6,12 +6,11 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="KMP Template"
-        android:roundIcon="@drawable/ic_launcher_background"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <activity
             android:exported="true"
-            android:name="com.chiachat.kmp.template.app.android.MainActivity"
+            android:name="org.chiachat.kmp.template.app.android.MainActivity"
         >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

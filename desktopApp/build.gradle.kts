@@ -22,10 +22,10 @@ kotlin {
 }
 
 val assets = File("../shared/src/commonMain/resources/assets" )
-val icons = assets.resolve("icons/dialexa")
-val ico = icons.resolve("dialexa-icon-gold.ico")
-val icns = icons.resolve("dialexa-icon-gold.icns")
-val png = icons.resolve("dialexa-icon-gold.png")
+val icons = assets.resolve("icons")
+val ico = icons.resolve("app-icon.ico")
+val icns = icons.resolve("app-icon.icns")
+val png = icons.resolve("app-icon.png")
 
 
 val artifactName: String by project
@@ -64,7 +64,7 @@ compose {
 
                 linux {
                     iconFile.set(png)
-                    debMaintainer = "andrea.bueide@dialexa.com"
+                    debMaintainer = "andrea@abysl.com"
                 }
             }
         }

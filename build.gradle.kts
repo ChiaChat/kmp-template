@@ -41,11 +41,11 @@ koverReport {
 * artifactName=kmp-template
 camelCaseName=KmpTemplate
 titleName=KMP Template
-group=com.chiachat.kmp.template
+group=org.chiachat.kmp.template
 version=1.0.0
 * */
-val OLD_PACKAGE_PATH = "com.dialexa.accelerator.kmp".replace('.', File.separatorChar)
-val OLD_PACKAGE_DIRECTIVE = "com.dialexa.accelerator.kmp"
+val OLD_PACKAGE_PATH = "org.chiachat.kmp.template".replace('.', File.separatorChar)
+val OLD_PACKAGE_DIRECTIVE = "org.chiachat.kmp.template"
 val OLD_ARTIFACT = "kmp-template"
 val OLD_CAMEL_CASE = "KmpTemplate"
 val OLD_TITLE = "KMP Template"

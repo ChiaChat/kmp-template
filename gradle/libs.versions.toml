@@ -1,0 +1,83 @@
+[versions]
+kotlin = "1.9.0"
+androidGradlePlugin = "7.4.0"
+compose-multiplatform = "1.4.3"
+compose-compiler = "1.5.1"
+detekt = "1.23.0"
+coroutines = "1.7.3"
+ktor = "2.3.3"
+mockito = "5.4.0"
+mockito_kotlin = "5.0.0"
+sqlDelight = "2.0.0"
+postgres = "42.6.0"
+koin = "3.4.3"
+junit = "5.10.0"
+proguard = "7.3.2"
+junitAndroid = "1.8.2.0"
+kermit = "1.2.2"
+kover = "0.7.2"
+kor = "4.0.9"
+ktfmt = "0.13.0"
+kotlinxSerialization = "1.5.1"
+mpsettings = "1.0.0"
+decompose = "1.0.0-beta-02"
+androidx-appcompat = "1.6.1"
+androidx-ktx = "1.10.1"
+
+[libraries]
+detekt-formatting = { module = "io.gitlab.arturbosch.detekt:detekt-formatting", version.ref = "detekt" }
+sqldelight = { module = "app.cash.sqldelight:gradle-plugin", version.ref = "sqlDelight" }
+proguard = { module = "com.guardsquare:proguard-gradle", version.ref = "proguard" }
+junit-android = { module = "de.mannodermaus.gradle.plugins:android-junit5", version.ref = "junitAndroid" }
+koin-core = { module = "io.insert-koin:koin-core", version.ref = "koin" }
+koin-android = { module = "io.insert-koin:koin-android", version.ref = "koin" }
+korio = { module = "com.soywiz.korlibs.korio:korio", version.ref = "kor" }
+kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "coroutines" }
+kotlinx-protobuf = { module = "org.jetbrains.kotlinx:kotlinx-serialization-protobuf", version.ref = "kotlinxSerialization" }
+kotlinx-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinxSerialization" }
+ktor-network = { module = "io.ktor:ktor-network", version.ref = "ktor" }
+ktor-tls = { module = "io.ktor:ktor-network-tls", version.ref = "ktor" }
+ktor-tls-certs = { module = "io.ktor:ktor-network-tls-certificates", version.ref = "ktor" }
+ktor-json = { module = "io.ktor:ktor-serialization-kotlinx-json", version.ref = "ktor" }
+ktor-server-core = { module = "io.ktor:ktor-server-core", version.ref = "ktor" }
+ktor-server-auth = { module = "io.ktor:ktor-server-auth", version.ref = "ktor" }
+ktor-server-content-negotiation = { module = "io.ktor:ktor-server-content-negotiation", version.ref = "ktor" }
+ktor-server-netty = { module = "io.ktor:ktor-server-netty", version.ref = "ktor" }
+ktor-client-auth = { module = "io.ktor:ktor-client-auth", version.ref = "ktor" }
+ktor-client-cio = { module = "io.ktor:ktor-client-cio", version.ref = "ktor" }
+ktor-client-content-negotiation = { module = "io.ktor:ktor-client-content-negotiation", version.ref = "ktor" }
+kermit = { module = "co.touchlab:kermit", version.ref = "kermit" }
+mockito = { module = "org.mockito:mockito-core", version.ref = "mockito" }
+mockitoKotlin = { module = "org.mockito.kotlin:mockito-kotlin", version.ref = "mockito_kotlin" }
+junitApi = { module = "org.junit.jupiter:junit-jupiter-api", version.ref = "junit" }
+junitEngine = { module = "org.junit.jupiter:junit-jupiter-engine", version.ref = "junit" }
+kotlinx-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "coroutines" }
+koin-test = { module = "io.insert-koin:koin-test", version.ref = "koin" }
+koin-test-jvm = { module = "io.insert-koin:koin-test-junit5", version.ref = "koin" }
+mpsettings = { module = "com.russhwolf:multiplatform-settings", version.ref = "mpsettings" }
+mpsettingsNoArgs = { module = "com.russhwolf:multiplatform-settings-no-arg", version.ref = "mpsettings" }
+decompose = { module = "com.arkivanov.decompose:decompose", version.ref = "decompose" }
+dialect-postgres = { module = "app.cash.sqldelight:postgresql-dialect", version.ref = "sqlDelight" }
+dialect-sqlite = { module = "app.cash.sqldelight:sqlite-3-38-dialect", version.ref = "sqlDelight" }
+driver-jdbc = { module = "app.cash.sqldelight:jdbc-driver", version.ref = "sqlDelight" }
+driver-postgres = { module = "org.postgresql:postgresql", version.ref = "postgres" }
+driver-sqlite-js = { module = "app.cash.sqldelight:web-worker-driver", version.ref = "sqlDelight" }
+driver-sqlite-jvm = { module = "app.cash.sqldelight:sqlite-driver", version.ref = "sqlDelight" }
+driver-sqlite-native = { module = "app.cash.sqldelight:native-driver", version.ref = "sqlDelight" }
+driver-sqlite-android = { module = "app.cash.sqldelight:android-driver", version.ref = "sqlDelight" }
+androidx-ktx = { module = "androidx.core:core-ktx", version.ref = "androidx-ktx" }
+androidx-appcompat = { module = "androidx.appcompat:appcompat", version.ref = "androidx-appcompat" }
+compose-compiler = { module = "androidx.compose.compiler:compiler", version.ref="compose-compiler" }
+
+[plugins]
+kover = { id = "org.jetbrains.kotlinx.kover", version.ref = "kover" }
+kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
+kotlin-cocoapods = { id = "org.jetbrains.kotlin.native.cocoapods", version.ref = "kotlin" }
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }
+android-library = { id = "com.android.library", version.ref = "androidGradlePlugin" }
+compose-multiplatform = { id = "org.jetbrains.compose", version.ref = "compose-multiplatform" }
+taskinfo = { id = "org.barfuin.gradle.taskinfo", version = "2.1.0" }
+sqldelight = { id = "app.cash.sqldelight", version.ref = "sqlDelight" }
+ktfmt = { id = "com.ncorti.ktfmt.gradle", version.ref = "ktfmt" }

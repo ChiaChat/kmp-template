@@ -1,11 +1,11 @@
 package org.chiachat.kmp.template.shared.ui.components.onboarding.login
 
 import co.touchlab.kermit.Logger
+import kotlinx.coroutines.flow.MutableStateFlow
 import org.chiachat.kmp.template.shared.ui.components.KoinViewModel
 import org.chiachat.kmp.template.shared.ui.components.ViewModel
 import org.chiachat.kmp.template.shared.ui.services.ResourceService
 import org.chiachat.kmp.template.shared.ui.services.ThemeService
-import kotlinx.coroutines.flow.MutableStateFlow
 import org.koin.core.component.inject
 
 internal interface LoginViewModel : ViewModel {

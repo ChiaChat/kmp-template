@@ -6,8 +6,7 @@ import app.cash.sqldelight.driver.native.NativeSqliteDriver
 
 actual class PlatformDb {
     actual suspend fun getDriver(): SqlDriver {
-        val driver: SqlDriver =
-            NativeSqliteDriver(KmpTemplateDb.Schema.synchronous(), "app.db")
+        val driver: SqlDriver = NativeSqliteDriver(KmpTemplateDb.Schema.synchronous(), "app.db")
         return driver
     }
 }

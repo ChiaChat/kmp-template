@@ -5,12 +5,12 @@
 
 import android.content.Context
 import androidx.compose.runtime.Composable
-import org.chiachat.kmp.template.shared.SharedAppModules
-import org.chiachat.kmp.template.shared.ui.ComposeAppModules
-import org.chiachat.kmp.template.shared.ui.ComposeRoot
 import korlibs.io.android.AndroidCoroutineContext
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import org.chiachat.kmp.template.shared.SharedAppModules
+import org.chiachat.kmp.template.shared.ui.ComposeAppModules
+import org.chiachat.kmp.template.shared.ui.ComposeRoot
 import org.koin.core.context.startKoin
 import org.koin.core.qualifier.named
 import org.koin.dsl.module

@@ -1,7 +1,7 @@
 package org.chiachat.kmp.template.shared.util
 
-import org.chiachat.kmp.template.shared.util.SettingKeys.REFRESH_TOKEN
 import com.russhwolf.settings.Settings
+import org.chiachat.kmp.template.shared.util.SettingKeys.REFRESH_TOKEN
 
 class MpSettings {
     val settings: Settings = Settings()

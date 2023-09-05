@@ -1,8 +1,8 @@
 package org.chiachat.kmp.template.shared.ui.components.onboarding.register
 
+import kotlinx.coroutines.flow.MutableStateFlow
 import org.chiachat.kmp.template.shared.ui.components.KoinViewModel
 import org.chiachat.kmp.template.shared.ui.components.ViewModel
-import kotlinx.coroutines.flow.MutableStateFlow
 
 internal interface RegistrationViewModel : ViewModel {
     val username: MutableStateFlow<String>

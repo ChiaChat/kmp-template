@@ -4,8 +4,8 @@ import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import org.chiachat.kmp.template.shared.util.MpSettings
 import kotlinx.coroutines.flow.MutableStateFlow
+import org.chiachat.kmp.template.shared.util.MpSettings
 
 internal class ThemeService(settings: MpSettings) {
     private val darkMode = MutableStateFlow(settings.darkMode)

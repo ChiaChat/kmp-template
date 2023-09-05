@@ -12,11 +12,11 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import kotlinx.coroutines.flow.MutableStateFlow
 import org.chiachat.kmp.template.shared.ui.composables.Graphics.Graphic
 import org.chiachat.kmp.template.shared.ui.composables.Graphics.GraphicButton
 import org.chiachat.kmp.template.shared.ui.services.ThemeService
 import org.chiachat.kmp.template.shared.ui.theme.AppGraphics
-import kotlinx.coroutines.flow.MutableStateFlow
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 

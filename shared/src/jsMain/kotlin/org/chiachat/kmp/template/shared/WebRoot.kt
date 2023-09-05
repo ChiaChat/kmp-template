@@ -1,13 +1,13 @@
 package org.chiachat.kmp.template.shared /*
-                                            * Copyright 2020-2021 JetBrains s.r.o. and respective authors and developers.
-                                            * Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE.txt file.
-                                            */
+                                          * Copyright 2020-2021 JetBrains s.r.o. and respective authors and developers.
+                                          * Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE.txt file.
+                                          */
 
 import androidx.compose.runtime.Composable
-import org.chiachat.kmp.template.shared.ui.ComposeAppModules
-import org.chiachat.kmp.template.shared.ui.ComposeRoot
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import org.chiachat.kmp.template.shared.ui.ComposeAppModules
+import org.chiachat.kmp.template.shared.ui.ComposeRoot
 import org.koin.core.context.startKoin
 import org.koin.core.qualifier.named
 import org.koin.dsl.module

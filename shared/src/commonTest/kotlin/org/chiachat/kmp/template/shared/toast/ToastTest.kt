@@ -1,11 +1,11 @@
 package org.chiachat.kmp.template.shared.toast
 
-import org.chiachat.kmp.template.shared.services.toast.ToastService
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.advanceTimeBy
 import kotlinx.coroutines.test.runTest
+import org.chiachat.kmp.template.shared.services.toast.ToastService
 
 class ToastTest {
 

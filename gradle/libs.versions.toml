@@ -20,7 +20,7 @@ kor = "4.0.10"
 ktfmt = "0.13.0"
 kotlinxSerialization = "1.6.0"
 mpsettings = "1.0.0"
-decompose = "1.0.0-beta-02"
+decompose = "2.2.0-compose-experimental-alpha05"
 androidx-appcompat = "1.6.1"
 androidx-ktx = "1.10.1"
 
